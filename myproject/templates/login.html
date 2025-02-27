@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Log IN Your Account</h2>
+        <br>
+        <br>
+        <br>
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <b style="background-color: coral;">{{message}}</b><br>
+                {% else %}
+                    <b style="background-color: rgb(158, 236, 12);">{{message}}</b><br>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" placeholder="username" required name = "uname">
+            <label>Username:</label><br>
+
+            <input type="password" placeholder="password" required name ="password">
+            <label>password </label><br>
+
+            <input type="submit" value="Login">
+            <br>
+            Not a member? <a href="{% url 'register' %}">Register</a>
+            <p>Forget your Password? <a href="{% url 'forget-password'%}">Reset Password</a></p>
+
+        </form>
+
+    </body>
+</html>

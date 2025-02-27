@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget_Password</title>
+</head>
+<body>
+    <h2>Reset Password</h2>
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <b style="background-color: chocolate;">{{message}}</b>
+            {% else %}
+            <b style="background-color: rgb(42, 231, 17);">{{message}}</b>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <br>
+        <input type="text" placeholder="email" name="email">
+        <label>Email</label><br>
+        <br>
+        <input type="submit" value="Reset Password">
+        <br>
+        Not a member? <a href="{% url 'register'%}">Signup</a><br>
+        Remember your Password? <a href="{% url 'login'%}">Login</a>
+    </form>
+</body>
+</html>

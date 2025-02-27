@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2> Register</h2>
+    <br>
+    <br>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if "error" in message.tags %}
+                <b style="background-color: darksalmon;">{{message}}</b><br>
+            {% else %}
+                <b>{{message}}</b>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name = fname>
+        <label>First Name</label><br>
+        
+        <input type="text" name = lname>
+        <label>Last Name</label><br>
+
+        <input type="text" name = uname>
+        <label>Username</label><br>
+
+        <input type="text" name = email>
+        <label>Email</label><br>
+
+        <input type="text" name = password>
+        <label>Password</label><br><br>
+
+        <input type="submit" value="Register">
+        <br>
+        Already have an account? <a href="{% url 'login'%}">Login</a>
+    </form>
+</body>
+</html>
